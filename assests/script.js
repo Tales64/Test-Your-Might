@@ -19,11 +19,12 @@ function localScores() {
   
     // Render a new li for each todo
     for (var i = 0; i < highScores.length; i++) {
-      var topScores = highScores[i];
-  
+        var topScores = highScores[i].initial +" "+ highScores[i].score ;
+
+
       var li = document.createElement("li");
       li.textContent = topScores;
-      li.setAttribute("topScores", i);
+      li.setAttribute("topScores", topScores);
   
       scoreList.appendChild(li);
     }
