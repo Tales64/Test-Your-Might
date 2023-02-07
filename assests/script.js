@@ -58,6 +58,9 @@ function startGame() {
                       
 }
 
+
+var secondsLeft = (package.length*10)
+
 function nextQuestion(){
     console.log(question[questionIndex].corr)
     
@@ -75,6 +78,25 @@ function nextQuestion(){
     
 }
 
+function questionClick (event){
+    var clickbutton = event.target
+    if (clickbutton.textContent == question[questionIndex].corr){
+        document.getElementById("feedback").textContent = "Right"
+        var points = (questionIndex + 1)
+        var currentPoints = parseInt(points)
+        score += currentPoints  
+        scorePlace.textContent = score
+        // console.log(points)
+        // console.log(currentPoints)
+        // console.log(score)
+        questionIndex++
+        if (secondsLeft <=0 || questionIndex === question.length){
+            endQuiz();
+        }
+        else{
+            nextQuestion();
+        }
+    }
 
 
 // Create a function to compare answers
