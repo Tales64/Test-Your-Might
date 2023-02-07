@@ -8,9 +8,44 @@ var questionIndex = 0
 var score = 0
 var initials = document.querySelector("#initialsInput");
 
-var highScores = JSON.parse(localStorage.getItem('highscores')) || [];
-var ul = document.getElementById("highScores")
+var highScores = [];
+var scoreList = document.getElementById("highScores")
 
+
+
+function localScores() {
+    // Clear todoList element and update todoCountSpan
+    
+  
+    // Render a new li for each todo
+    for (var i = 0; i < highScores.length; i++) {
+      var topScores = highScores[i];
+  
+      var li = document.createElement("li");
+      li.textContent = topScores;
+      li.setAttribute("topScores", i);
+  
+      scoreList.appendChild(li);
+    }
+  }
+
+function init() {
+  // Get stored todos from localStorage
+  var storedScores = JSON.parse(localStorage.getItem("highscores"));
+
+  // If todos were retrieved from localStorage, update the todos array to it
+  if (storedScores !== null) {
+    highScores = storedScores;
+  }
+
+  // This is a helper function that will render todos to the DOM
+  localScores();
+}
+
+function storeScores() {
+  // Stringify and set key in localStorage to Scores array
+  localStorage.setItem("highscores", JSON.stringify(highScores));
+}
 
 // Create an object with questions and answers
 var package = [{
@@ -156,7 +191,7 @@ function setTime() {
 
 
         // when a user clicks the submit button
-        submitEl.addEventListener("submit", function(event) {
+submitEl.addEventListener("click", function(event) {
             event.preventDefault();
             
             // put their score in a score object
@@ -170,8 +205,8 @@ function setTime() {
               }
               
               // Add new todoText to todos array, clear the input
-            newScore.push(highScores);
-            initialsinput.value = "";
+            highScores.push(newScore);
+            // initialsInput.value = "";
               // **** display that score in one of the LIs
               
               
@@ -184,31 +219,31 @@ function setTime() {
                   //console.log(newScore)
                   
                   // add that score object to local storage
-        window.localStorage.setItem("highscores",  JSON.stringify(newScore));
-        storeTodos();
-        renderTodos();
+        
+        storeScores();
+        localScores();
         });
 
+console.log(highScores)
 
+    // function renderMessage() {
+    //     //newScore = JSON.parse(localStorage.getItem("newScore"));
 
-    function renderMessage() {
-        //newScore = JSON.parse(localStorage.getItem("newScore"));
+    //     console.log('highscores line 180',highScores)
 
-        console.log('highscores line 180',highScores)
+    //     for (const element in highScores) {
+    //         if (Object.hasOwnProperty.call(highScores, element)) {
+    //             const el = highScores[element];
+    //             var li = document.createElement("li")
 
-        for (const element in highScores) {
-            if (Object.hasOwnProperty.call(highScores, element)) {
-                const el = highScores[element];
-                var li = document.createElement("li")
-
-                li.appendChild(highScores[x].score  +highScores[x].initial)
-                console.log(li)
-                ul.append(li)
-                console.log(el)
+    //             li.appendChild(highScores[x].score  +highScores[x].initial)
+    //             console.log(li)
+    //             ul.append(li)
+    //             console.log(el)
                 
-            }
-        }
-    }
+    //         }
+    //     }
+    // }
         
     //     for (let x = 0; x < highScores.length; x++) {
     //         console.log(highScores[x])
