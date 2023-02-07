@@ -62,25 +62,25 @@ function startGame() {
 var secondsLeft = (package.length*10)
 
 function nextQuestion(){
-    console.log(question[questionIndex].corr)
+    console.log(question[questionIndex].answer)
     
     // the questions and answers in their own boxes
     var currentQuest = document.querySelector("#question");
-    var answer1 = document.querySelector("#answer1");
-    var answer2 = document.querySelector("#answer2");
-    var answer3 = document.querySelector("#answer3");
-    var answer4 = document.querySelector("#answer4");
+    var choice1 = document.querySelector("#choice1");
+    var choice2 = document.querySelector("#choice2");
+    var choice3 = document.querySelector("#choice3");
+    var choice4 = document.querySelector("#choice4");
     currentQuest.textContent = package[questionIndex].quest;
-    answer1.textContent = package[questionIndex].choices[0];
-    answer2.textContent = package[questionIndex].choices[1];
-    answer3.textContent = package[questionIndex].choices[2];
-    answer4.textContent = package[questionIndex].choices[3];
+    choice1.textContent = package[questionIndex].choices[0];
+    choice2.textContent = package[questionIndex].choices[1];
+    choice3.textContent = package[questionIndex].choices[2];
+    choice4.textContent = package[questionIndex].choices[3];
     
 }
 
 function questionClick (event){
     var clickbutton = event.target
-    if (clickbutton.textContent == question[questionIndex].corr){
+    if (clickbutton.textContent == package[questionIndex].answer){
         document.getElementById("feedback").textContent = "Right"
         var points = (questionIndex + 1)
         var currentPoints = parseInt(points)
@@ -90,14 +90,41 @@ function questionClick (event){
         // console.log(currentPoints)
         // console.log(score)
         questionIndex++
-        if (secondsLeft <=0 || questionIndex === question.length){
+        if (secondsLeft <=0 || questionIndex === package.length){
             endQuiz();
         }
         else{
             nextQuestion();
         }
     }
+}
+function endQuiz(){
+    // to be completed
+}
 
+document.querySelector("#highscore")
+document.querySelector("#choice1").addEventListener("click", questionClick)
+document.querySelector("#choice2").addEventListener("click", questionClick)
+document.querySelector("#choice3").addEventListener("click", questionClick)
+document.querySelector("#choice4").addEventListener("click", questionClick)
+// answer1.addEventListener("click", startQuiz)
+// WHEN I click the start button
+            // // THEN a timer starts and I am presented with a question
+            function setTime() {
+                // Sets interval in variable
+                var timerInterval = setInterval(function() {
+                    secondsLeft--;
+                    timer.textContent = secondsLeft ;
+                    
+                    if(secondsLeft === 0) {
+        //     // Stops execution of action at set interval
+        clearInterval(timerInterval);
+        //     // Calls function to create and append image
+        //     sendMessage();
+    }
+    // console.log(secondsLeft)
+}, 1000);
+}
 
 // Create a function to compare answers
 
