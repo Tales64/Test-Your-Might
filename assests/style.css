@@ -1,0 +1,46 @@
+#navDis{
+    display: flex;
+    justify-content: space-between;
+    }
+    body{
+        background-color: rgb(143, 137, 137);
+    }
+    
+    #contain{
+        display: flex;
+    justify-content: center;
+    }
+    #container{
+        display: flex;
+        justify-content: center;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    #initialsInput{
+        background-color: rgb(238, 232, 232);
+    
+    }
+    .box-question{
+        justify-content: center;
+        background-color: aqua;
+        width: 1600px; 
+        height: 200px;
+    }
+    .box{
+     
+        background-color: aqua;
+        color: black;
+        width: 800px;
+        height: 350px;
+        border-radius: 10px;
+        border-width: 15px;
+        border-color: rgb(12, 24, 20);
+        margin: 10px;
+    }
+    .hide {
+    display: none;
+    }
+    
+    
+    
