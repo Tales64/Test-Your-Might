@@ -121,25 +121,28 @@ function nextQuestion(){
 
 function questionClick (event){
     var clickbutton = event.target
-    if (clickbutton.textContent == package[questionIndex].answer){
+    if (clickbutton.textContent === package[questionIndex].answer){
         document.getElementById("feedback").textContent = "Right"
         var points = (questionIndex + 1)
         var currentPoints = parseInt(points)
         score += currentPoints  
         scorePlace.textContent = score
-        // console.log(points)
-        // console.log(currentPoints)
-        // console.log(score)
+  
+    }
+    else (clickbutton.textContent !== package[questionIndex].answer){
+        document.getElementById("feedback").textContent = "WRONG!" 
         questionIndex++
-        if (secondsLeft <=0 || questionIndex === package.length){
-            endQuiz();
-        }
-        else{
-            nextQuestion();
+        nextQuestion();
         }
     }
-}
+
 function endQuiz(){
+currentQuest.remove
+choice1.remove
+choice2.remove
+choice3.remove
+choice4.remove
+document.getElementById("feedback").textContent = "GAME OVER"
     // to be completed
 }
 
@@ -148,9 +151,11 @@ document.querySelector("#choice1").addEventListener("click", questionClick)
 document.querySelector("#choice2").addEventListener("click", questionClick)
 document.querySelector("#choice3").addEventListener("click", questionClick)
 document.querySelector("#choice4").addEventListener("click", questionClick)
-// answer1.addEventListener("click", startQuiz)
+
 // WHEN I click the start button
             // // THEN a timer starts and I am presented with a question
+
+
 function setTime() {
                 // Sets interval in variable
     var timerInterval = setInterval(function() {
@@ -161,7 +166,7 @@ function setTime() {
         //     // Stops execution of action at set interval
         clearInterval(timerInterval);
         //     // Calls function to create and append image
-        //     sendMessage();
+        endQuiz()
     }
     // console.log(secondsLeft)
 }, 1000);
@@ -225,49 +230,11 @@ submitEl.addEventListener("click", function(event) {
         localScores();
         });
 
-console.log(highScores)
-
-    // function renderMessage() {
-    //     //newScore = JSON.parse(localStorage.getItem("newScore"));
-
-    //     console.log('highscores line 180',highScores)
-
-    //     for (const element in highScores) {
-    //         if (Object.hasOwnProperty.call(highScores, element)) {
-    //             const el = highScores[element];
-    //             var li = document.createElement("li")
-
-    //             li.appendChild(highScores[x].score  +highScores[x].initial)
-    //             console.log(li)
-    //             ul.append(li)
-    //             console.log(el)
-                
-    //         }
-    //     }
-    // }
-        
-    //     for (let x = 0; x < highScores.length; x++) {
-    //         console.log(highScores[x])
-            
-            
-            
-    //     }
-    //    0
-    // }
-      
-    
-    
-   
-    
+console.log(highScores);
         // get all the saved scores and print to page
         // get initials and creat a new highscore limit the number of highscores
         // const scoreLength = ["1","2","3","4","5"]
-        // function placeHighScores(){
-        //     for (let i = 0; i < scoreLength.length; i++) {
-        //     document.querySelector("#highscore")
-                
-    //     //     }
-    //     // }
+        
 
 
-    init()
+init();
