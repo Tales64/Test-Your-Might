@@ -126,10 +126,101 @@ document.querySelector("#choice4").addEventListener("click", questionClick)
 }, 1000);
 }
 
-// Create a function to compare answers
 
-// Create a function to start a timer 
+    // WHEN I answer a question incorrectly
+    // THEN time is subtracted from the clock
+    // WHEN all questions are answered or the timer reaches 0
+    // THEN the game is over
+    // THEN I can save my initials and my score
+    // 
+    // 
+    // 
+    // 
+    // create variables for all the questions in an array
+    // create an array for all the potential answers 
+    // create variables for all the correct answers
+    // create a randomizer to choose questions to dissplay optional
+    // create a for loop to continue choosing questions 
+    // function saveHighScore(event){
+        //     event.preventDefault();
+        
+        
+        
+        //     // }
+        // }
 
-// Create a function to calculate a score 
+
+        // when a user clicks the submit button
+        submitEl.addEventListener("click", function(event) {
+            event.preventDefault();
+            
+            // put their score in a score object
+            var newScore = {
+                score: score,
+                initial: initials.value
+            };
+            
+            
+            // add that score object to local storage
+            window.localStorage.setItem("highscores", JSON.stringify(newScore));
+
+            // **** display that score in one of the LIs
+
+
+
+
+            // setTimeout(() => {
+            
+            //     renderMessage();
+            // }, 1000);
+                //console.log(newScore)
+
+        
+            
+        });
+
+
+
+    function renderMessage() {
+        //newScore = JSON.parse(localStorage.getItem("newScore"));
+
+        console.log('highscores line 180',highScores)
+
+        for (const element in highScores) {
+            if (Object.hasOwnProperty.call(highScores, element)) {
+                const el = highScores[element];
+                var li = document.createElement("li")
+
+                li.appendChild(highScores[x].score  +highScores[x].initial)
+                console.log(li)
+                ul.append(li)
+                console.log(el)
+                
+            }
+        }
+    }
+        
+    //     for (let x = 0; x < highScores.length; x++) {
+    //         console.log(highScores[x])
+            
+            
+            
+    //     }
+    //    0
+    // }
+      
+    
+    
+   
+    
+        // get all the saved scores and print to page
+        // get initials and creat a new highscore limit the number of highscores
+        // const scoreLength = ["1","2","3","4","5"]
+        // function placeHighScores(){
+        //     for (let i = 0; i < scoreLength.length; i++) {
+        //     document.querySelector("#highscore")
+                
+    //     //     }
+    //     // }
 
 
