@@ -53,16 +53,21 @@ var package = [{
 // Create a function to save scores in local storage
 
 // Create a function to start the game
-
-function startGame() {
-                      
-}
-
+startButton.addEventListener("click", function() {
+    console.log("Hello")
+    setTime();
+    startQuiz();
+});
 
 var secondsLeft = (package.length*10)
 
+function startQuiz(){
+    nextQuestion()
+}
+
+
 function nextQuestion(){
-    console.log(question[questionIndex].answer)
+    console.log(package[questionIndex].answer)
     
     // the questions and answers in their own boxes
     var currentQuest = document.querySelector("#question");
@@ -70,7 +75,7 @@ function nextQuestion(){
     var choice2 = document.querySelector("#choice2");
     var choice3 = document.querySelector("#choice3");
     var choice4 = document.querySelector("#choice4");
-    currentQuest.textContent = package[questionIndex].quest;
+    currentQuest.textContent = package[questionIndex].question;
     choice1.textContent = package[questionIndex].choices[0];
     choice2.textContent = package[questionIndex].choices[1];
     choice3.textContent = package[questionIndex].choices[2];
@@ -110,13 +115,13 @@ document.querySelector("#choice4").addEventListener("click", questionClick)
 // answer1.addEventListener("click", startQuiz)
 // WHEN I click the start button
             // // THEN a timer starts and I am presented with a question
-            function setTime() {
+function setTime() {
                 // Sets interval in variable
-                var timerInterval = setInterval(function() {
-                    secondsLeft--;
-                    timer.textContent = secondsLeft ;
+    var timerInterval = setInterval(function() {
+    secondsLeft--;
+    timer.textContent = secondsLeft ;
                     
-                    if(secondsLeft === 0) {
+    if(secondsLeft === 0) {
         //     // Stops execution of action at set interval
         clearInterval(timerInterval);
         //     // Calls function to create and append image
@@ -151,32 +156,37 @@ document.querySelector("#choice4").addEventListener("click", questionClick)
 
 
         // when a user clicks the submit button
-        submitEl.addEventListener("click", function(event) {
+        submitEl.addEventListener("submit", function(event) {
             event.preventDefault();
             
             // put their score in a score object
             var newScore = {
                 score: score,
-                initial: initials.value
+                initial: initials.value.trim()
             };
             
-            
-            // add that score object to local storage
-            window.localStorage.setItem("highscores", JSON.stringify(newScore));
-
-            // **** display that score in one of the LIs
-
-
-
-
-            // setTimeout(() => {
-            
-            //     renderMessage();
-            // }, 1000);
-                //console.log(newScore)
-
-        
-            
+            if (newScore === "") {
+                return;
+              }
+              
+              // Add new todoText to todos array, clear the input
+            newScore.push(highScores);
+            initialsinput.value = "";
+              // **** display that score in one of the LIs
+              
+              
+              
+              
+              // setTimeout(() => {
+                  
+                  //     renderMessage();
+                  // }, 1000);
+                  //console.log(newScore)
+                  
+                  // add that score object to local storage
+        window.localStorage.setItem("highscores",  JSON.stringify(newScore));
+        storeTodos();
+        renderTodos();
         });
 
 
@@ -224,3 +234,4 @@ document.querySelector("#choice4").addEventListener("click", questionClick)
     //     // }
 
 
+    init()
