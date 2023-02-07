@@ -51,38 +51,38 @@ function storeScores() {
 // Create an object with questions and answers
 var package = [{
     question: "Who is the richest hero in all of comics?",
-    choices:[1,2,3,4],
-    answer:1,
+    choices:["Batman","Ironman","Green Arrow","Black Panther"],
+    answer:"Black Panther",
 },
 {
-    question: "Who is the richest hero in all of comics?",
-    choices:[1,2,3,4],
-    answer:1,
+    question: "Who has the most powers?",
+    choices:["Superman","Legion","Amazo","Franklin Richards"],
+    answer:"Franklin Richards",
 },
 {
-    question: "Who is the richest hero in all of comics?",
-    choices:[1,2,3,4],
-    answer:1,
+    question: "Who has the most biological parents?",
+    choices:["Thor","Cyborg","Wonder Woman","Jubilation Lee"],
+    answer:"Thor",
 },
 {
-    question: "Who is the richest hero in all of comics?",
-    choices:[1,2,3,4],
-    answer:1,
+    question: "Who true name is James Howlet?",
+    choices:["Spawn","Invincible","Martian Man Hunter","Wolverine"],
+    answer:"Wolverine",
 },
 {
-    question: "Who is the richest hero in all of comics?",
-    choices:[1,2,3,4],
-    answer:1,
+    question: "Who is a clone of Spider-Man?",
+    choices:["Ben Riely","Miles Morales","Black Spider","Oliver Quinn"],
+    answer:"Ben Riely",
 },
 {
-    question: "Who is the richest hero in all of comics?",
-    choices:[1,2,3,4],
-    answer:1,
+    question: "Who can the greatest martial artist in DC?",
+    choices:["Batman","Bronze Tiger","Lady Shiva","Karate Kid"],
+    answer:"Karate Kid",
 },
 {
-    question: "Who is the richest hero in all of comics?",
-    choices:[1,2,3,4],
-    answer:1,
+    question: "Who live in a pinnaple under the sea?",
+    choices:["Aqua Man","Namor","Black Manta","Gary"],
+    answer:"Gary",
 }]
 
 // Create Variables for Local storage
