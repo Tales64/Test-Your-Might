@@ -11,8 +11,9 @@ var initials = document.querySelector("#initialsInput");
 var highScores = [];
 var scoreList = document.getElementById("highScores")
 
+var boxEl = $('#container')
 
-
+console.log(questionIndex)
 function localScores() {
     // Clear todoList element and update todoCountSpan
     
@@ -128,29 +129,36 @@ function questionClick (event){
         score += currentPoints  
         scorePlace.textContent = score
   
-    }
-    else (clickbutton.textContent !== package[questionIndex].answer){
-        document.getElementById("feedback").textContent = "WRONG!" 
         questionIndex++
-        nextQuestion();
+    }
+    if (clickbutton.textContent !== package[questionIndex].answer){
+        document.getElementById("feedback").textContent = "WRONG!" 
+        secondsLeft += -10
+        questionIndex++
+        
         }
+    if (secondsLeft <=0){
+            document.getElementById("feedback").textContent = "Times UP"
+            endQuiz();
+    }
+        
+        nextQuestion();
+         
+
     }
 
 function endQuiz(){
-currentQuest.remove
-choice1.remove
-choice2.remove
-choice3.remove
-choice4.remove
+currentQuest.textContent.remove()
+choice1.textContent.remove()
+choice2.textContent.remove()
+choice3.textContent.remove()
+choice4.textContent.remove()
 document.getElementById("feedback").textContent = "GAME OVER"
     // to be completed
 }
 
 document.querySelector("#highscore")
-document.querySelector("#choice1").addEventListener("click", questionClick)
-document.querySelector("#choice2").addEventListener("click", questionClick)
-document.querySelector("#choice3").addEventListener("click", questionClick)
-document.querySelector("#choice4").addEventListener("click", questionClick)
+boxEl.on('click', '.box', questionClick);
 
 // WHEN I click the start button
             // // THEN a timer starts and I am presented with a question
